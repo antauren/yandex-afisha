@@ -12,3 +12,11 @@ class Place(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Image(models.Model):
+    name = models.CharField('Название', max_length=200)
+    image = models.ImageField()
+
+    def __str__(self):
+        return self.name
