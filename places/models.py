@@ -16,7 +16,15 @@ class Place(models.Model):
 
 class Image(models.Model):
     name = models.CharField('Название', max_length=200)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='images', verbose_name='Изображение')
+
+    place = models.ForeignKey(Place,
+                              on_delete=models.CASCADE,
+                              null=True,
+                              blank=True,
+                              verbose_name='Место',
+                              related_name='images'
+                              )
 
     def __str__(self):
         return self.name
