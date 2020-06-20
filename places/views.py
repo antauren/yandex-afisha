@@ -15,7 +15,7 @@ def show_place(request, place_id):
 
     response_dict = {
         'title': place.title,
-        'imgs': [],  # TODO
+        'imgs': [p_image.image.url for p_image in place.images.all()],
         'description_short': place.description_short,
         'description_long': place.description_long,
         'coordinates': {
