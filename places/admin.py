@@ -6,6 +6,7 @@ from .models import Place, Image
 
 class ImageInline(admin.TabularInline):
     model = Image
+    extra = 0
     readonly_fields = ['get_preview']
 
     def get_preview(self, obj):
