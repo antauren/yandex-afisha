@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.utils.html import format_html, mark_safe
+from django.utils.html import format_html
 
 from .models import Place, Image
 
@@ -13,7 +13,7 @@ class ImageInline(admin.TabularInline):
         html = '<img src="{url}" height="{height}"/>'.format(url=obj.image.url,
                                                              height=200,
                                                              )
-        return format_html('{}', mark_safe(html))
+        return format_html(html)
 
 
 @admin.register(Place)
