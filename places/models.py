@@ -26,5 +26,10 @@ class Image(models.Model):
                               related_name='images'
                               )
 
+    position = models.PositiveSmallIntegerField('Позиция', default=1)
+
+    class Meta(object):
+        ordering = ['position']
+
     def __str__(self):
         return self.name
