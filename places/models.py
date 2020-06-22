@@ -15,7 +15,7 @@ class Place(models.Model):
 
 
 class Image(models.Model):
-    name = models.CharField('Название', max_length=200)
+    name = models.CharField('Название', max_length=200, blank=True, default='')
     image = models.ImageField('Изображение', upload_to='images')
 
     place = models.ForeignKey(Place,
