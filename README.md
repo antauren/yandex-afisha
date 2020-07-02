@@ -12,7 +12,7 @@
 ## Как добавить данные
 (Данные хранятся в папке *places/data* в формате *.json*)
 - Добавить **все** данные: запустите команду `python3 manage.py load_place --all`
-- Добавить отдельные файлы: запустите команду `python3 manage.py load_place --files 1.json 2.json`
+- Добавить отдельные файлы: запустите команду `python3 manage.py load_place --files example_1.json example_2.json`
 
 ## Переменные окружения
 
