@@ -44,8 +44,8 @@ class Command(BaseCommand):
 def create_place(place_data: dict):
     place, _ = Place.objects.get_or_create(title=place_data['title'],
 
-                                           description_short=place_data['description_short'],
-                                           description_long=place_data['description_long'],
+                                           short_description=place_data['description_short'],
+                                           long_description=place_data['description_long'],
 
                                            latitude=place_data['coordinates']['lat'],
                                            longitude=place_data['coordinates']['lng']
