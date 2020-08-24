@@ -17,8 +17,6 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(blank=True, max_length=200, verbose_name='Название')),
                 ('image', models.ImageField(upload_to='images', verbose_name='Изображение')),
                 ('place', models.ForeignKey(
-                    blank=True,
-                    null=True,
                     on_delete=django.db.models.deletion.CASCADE,
                     related_name='images',
                     to='places.Place',
