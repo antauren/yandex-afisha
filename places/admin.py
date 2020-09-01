@@ -21,4 +21,4 @@ class PlaceAdmin(admin.ModelAdmin):
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    pass
+    raw_id_fields = ('place',)
