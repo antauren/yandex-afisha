@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 
@@ -5,7 +6,19 @@ from .models import Place
 
 
 def show_index(request):
-    places = Place.objects.all()
+    places = {
+        'type': 'FeatureCollection',
+        'features': [{'type': 'Feature',
+                      'geometry': {'type': 'Point',
+                                   'coordinates': [place.longitude, place.latitude]
+                                   },
+                      'properties': {'title': place.title,
+                                     'placeId': '{}'.format(place.id),
+                                     'detailsUrl': '/places/{}'.format(place.id)
+                                     }
+                      }
+                     for place in Place.objects.all()]
+    }
 
     return render(request, 'index.html', context={'places': places})
 
