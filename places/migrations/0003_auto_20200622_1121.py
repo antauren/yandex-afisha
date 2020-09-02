@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='image',
             name='position',
-            field=models.PositiveSmallIntegerField(default=1, verbose_name='Позиция'),
+            field=models.PositiveSmallIntegerField(db_index=True, default=1, verbose_name='Позиция'),
         ),
     ]
