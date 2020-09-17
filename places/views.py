@@ -12,7 +12,7 @@ def show_index(request):
                                    'coordinates': [place.longitude, place.latitude]
                                    },
                       'properties': {'title': place.title,
-                                     'placeId': '{}'.format(place.id),
+                                     'placeId': place.id,
                                      'detailsUrl': reverse('show_place', kwargs={'place_id': place.id})
                                      }
                       }
