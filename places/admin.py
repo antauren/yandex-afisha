@@ -13,7 +13,7 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     def get_preview(self, obj):
         if not obj.image:
             return 'изображение не загружено'
-        return format_html('<img src={} height={}/>', obj.image.url, 200)
+        return format_html('<img src="{}" height="{}"/>', obj.image.url, 200)
 
 
 @admin.register(Place)
