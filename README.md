@@ -11,14 +11,30 @@
 ## Запуск
 
 - Скачайте код
-- Установите зависимости командой `pip install -r requirements.txt`
-- Создайте БД командой `python3 manage.py migrate`
-- Запустите сервер командой `python3 manage.py runserver`
+- Установите зависимости  
+  ```
+  pip install -r requirements.txt
+  ```
+
+- Создайте БД 
+  ```
+  python3 manage.py migrate
+  ```
+- Запустите сервер командой 
+  ```
+  python3 manage.py runserver
+  ```
 
 ## Как добавить данные
 (Положить файлы с данными в папку *places/data* в формате *.json*)
-- Добавить **все** данные: запустите команду `python3 manage.py load_place --all`
-- Добавить отдельные файлы: запустите команду `python3 manage.py load_place --files example_1.json example_2.json`
+- Добавить **все** данные: запустите команду 
+  ```
+  python3 manage.py load_place --all
+  ```
+- Добавить отдельные файлы: запустите команду 
+  ```
+  python3 manage.py load_place --files example_1.json example_2.json
+  ```
 
 ## Переменные окружения
 
