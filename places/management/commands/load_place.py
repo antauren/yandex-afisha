@@ -3,6 +3,7 @@ import json
 
 import requests
 from urllib3.util import parse_url
+from tqdm import tqdm
 
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
@@ -27,7 +28,7 @@ class Command(BaseCommand):
 
         place_filenames = os.listdir(data_dir) if options['all'] else options['files']
 
-        for filename in place_filenames:
+        for filename in tqdm(place_filenames, desc='json-files handling'):
             _, ext = os.path.splitext(filename)
             if ext.lower() != '.json':
                 continue
