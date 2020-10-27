@@ -39,13 +39,14 @@ class Command(BaseCommand):
 
             try:
                 place_data = read_json(json_path)
-            except (UnicodeDecodeError, json.decoder.JSONDecodeError):
+            except (UnicodeDecodeError, json.decoder.JSONDecodeError) as err:
+                tqdm.write('Filename: {}\nError: {}\n'.format(filename, err))
                 continue
 
             try:
                 create_place(place_data)
-            except KeyError:
-                pass
+            except KeyError as err:
+                tqdm.write('Filename: {}\nError: {}\n'.format(filename, err))
 
 
 def create_place(place_data: dict):
