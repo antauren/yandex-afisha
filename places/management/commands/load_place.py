@@ -50,14 +50,15 @@ class Command(BaseCommand):
 
 
 def create_place(place_data: dict):
-    place, _ = Place.objects.get_or_create(title=place_data['title'],
+    place, _ = Place.objects.update_or_create(latitude=place_data['coordinates']['lat'],
+                                              longitude=place_data['coordinates']['lng'],
 
-                                           short_description=place_data['description_short'],
-                                           long_description=place_data['description_long'],
-
-                                           latitude=place_data['coordinates']['lat'],
-                                           longitude=place_data['coordinates']['lng']
-                                           )
+                                              defaults={
+                                                  'title': place_data['title'],
+                                                  'short_description': place_data['description_short'],
+                                                  'long_description': place_data['description_long'],
+                                              },
+                                              )
 
     for num, img_url in enumerate(place_data['imgs']):
         try:
@@ -68,7 +69,13 @@ def create_place(place_data: dict):
 
         filename = get_filename_from_url(img_url)
 
-        img_obj, _ = Image.objects.get_or_create(place=place, position=num + 1, name=filename)
+        img_obj, _ = Image.objects.update_or_create(place=place,
+                                                    name=filename,
+
+                                                    defaults={
+                                                        'position': num + 1,
+                                                    },
+                                                    )
         img_obj.image.save(filename, ContentFile(response.content))
 
 

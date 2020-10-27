@@ -11,6 +11,9 @@ class Place(models.Model):
     latitude = models.FloatField('Координата широты')
     longitude = models.FloatField('Координата долготы')
 
+    class Meta(object):
+        unique_together = ['latitude', 'longitude']
+
     def __str__(self):
         return self.title
 
@@ -29,6 +32,7 @@ class Image(models.Model):
 
     class Meta(object):
         ordering = ('position',)
+        unique_together = ['place', 'name']
 
     def __str__(self):
         return self.name
