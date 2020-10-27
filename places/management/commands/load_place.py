@@ -28,12 +28,19 @@ class Command(BaseCommand):
         place_filenames = os.listdir(data_dir) if options['all'] else options['files']
 
         for filename in place_filenames:
+            _, ext = os.path.splitext(filename)
+            if ext.lower() != '.json':
+                continue
+
             json_path = os.path.join(data_dir, filename)
 
             if not (os.path.exists(json_path) and os.path.isfile(json_path)):
                 continue
 
-            place_data = read_json(json_path)
+            try:
+                place_data = read_json(json_path)
+            except (UnicodeDecodeError, json.decoder.JSONDecodeError):
+                continue
 
             try:
                 create_place(place_data)
