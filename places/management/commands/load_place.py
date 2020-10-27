@@ -1,14 +1,13 @@
-import os
 import json
+import os
 
 import requests
-from urllib3.util import parse_url
-from tqdm import tqdm
-
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
+from tqdm import tqdm
+from urllib3.util import parse_url
 
-from places.models import Place, Image
+from places.models import Image, Place
 
 
 class Command(BaseCommand):
