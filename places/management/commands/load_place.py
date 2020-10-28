@@ -70,9 +70,9 @@ def create_place(place_data: dict):
         filename = get_filename_from_url(img_url)
 
         img_obj, _ = Image.objects.update_or_create(place=place,
+                                                    position=num + 1,
 
                                                     defaults={
-                                                        'position': num + 1,
                                                         'name': filename,
                                                     },
                                                     )
