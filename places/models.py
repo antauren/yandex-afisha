@@ -32,7 +32,6 @@ class Image(models.Model):
 
     class Meta(object):
         ordering = ('position',)
-        unique_together = ['place', 'name']
 
     def __str__(self):
         return self.name
