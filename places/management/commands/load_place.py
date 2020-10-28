@@ -69,14 +69,13 @@ def create_place(place_data: dict):
 
         filename = get_filename_from_url(img_url)
 
-        img_obj, _ = Image.objects.get_or_create(
-            place=place,
+        img_obj, _ = Image.objects.update_or_create(place=place,
+                                                    position=num + 1,
 
-            defaults={
-                'name': filename,
-                'position': num + 1,
-            },
-        )
+                                                    defaults={
+                                                        'name': filename,
+                                                    },
+                                                    )
         img_obj.image.save(filename, ContentFile(response.content))
 
 
